@@ -12,11 +12,25 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+    Debug Build:
+     runs-on: windows-latest
+     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+       - uses: actions/checkout@v2
+       - uses: microsoft/setup-msbuild@v1.0.1
+          
+       - name: Build 
+         run: msbuild /p:Configuration=Debug -maxCpuCount
+
+       - name: Upload Debug Build
+         uses: actions/upload-artifact@v2
+         with:
+          name: Build Debug
+          path: x64\Debug\
   
-  build:
-    
-    runs-on: windows-latest
-    steps:
+    Release Build:
+     runs-on: windows-latest
+     steps:
        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
        - uses: actions/checkout@v2
        - uses: microsoft/setup-msbuild@v1.0.1
@@ -29,13 +43,5 @@ jobs:
          with:
           name: Build Release
           path: x64\Release\
-          
-          
-       - name: Build Debug 
-         run: msbuild /p:Configuration=Release -maxCpuCount
 
-       - name: Upload Debug Build
-         uses: actions/upload-artifact@v2
-         with:
-          name: Build Release
-          path: x64\Debug\
+
