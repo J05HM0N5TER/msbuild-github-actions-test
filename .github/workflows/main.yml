@@ -12,7 +12,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    Debug Build:
+    debug-build:
      runs-on: windows-latest
      steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -28,7 +28,7 @@ jobs:
           name: Build Debug
           path: x64\Debug\
   
-    Release Build:
+    release-build:
      runs-on: windows-latest
      steps:
        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
