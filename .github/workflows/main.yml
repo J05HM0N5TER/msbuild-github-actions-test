@@ -21,11 +21,21 @@ jobs:
        - uses: actions/checkout@v2
        - uses: microsoft/setup-msbuild@v1.0.1
   
-       - name: build
+       - name: Build Release 
          run: msbuild /p:Configuration=Release -maxCpuCount
 
-       - name: Upload results
+       - name: Upload Release Build
          uses: actions/upload-artifact@v2
          with:
-          name: Build 
-          path: D:\a\msbuild-github-actions-test\msbuild-github-actions-test\x64\Release\msbuild-github-actions-test.exe
+          name: Build Release
+          path: x64\Release\
+          
+          
+       - name: Build Debug 
+         run: msbuild /p:Configuration=Release -maxCpuCount
+
+       - name: Upload Debug Build
+         uses: actions/upload-artifact@v2
+         with:
+          name: Build Release
+          path: x64\Debug\
