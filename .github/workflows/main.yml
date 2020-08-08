@@ -27,4 +27,5 @@ jobs:
        - name: Upload results
          uses: actions/upload-artifact@v2
          with:
+          name: Build 
           path: D:\a\msbuild-github-actions-test\msbuild-github-actions-test\x64\Release\msbuild-github-actions-test.exe
